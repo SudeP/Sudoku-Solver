@@ -57,7 +57,7 @@ namespace Sudoku_Solver
                 Sticks[y + 9] = stickChild;
             }
 
-
+            int cubeX = 0, cubeY = 0;
             for (int a = 0; a < 3; a++)
             {
                 for (int b = 0; b < 3; b++)
@@ -67,11 +67,17 @@ namespace Sudoku_Solver
                     {
                         for (int y = 0; y < 3; y++)
                         {
-                            cubeChild.Cells[x, y] = Buttons[x, y];
+                            int m = cubeX + x;
+                            int n = cubeY + y;
+
+                            cubeChild.Cells[m, n] = Buttons[m, n];
                         }
                     }
-                    Cubes[a + b] = cubeChild;
+                    int index = ((a + 1) * (b + 1)) - 1;
+                    Cubes[index] = cubeChild;
+                    cubeY += 3;
                 }
+                cubeX += 3;
             }
         }
         protected override void OnPaint(PaintEventArgs e)
