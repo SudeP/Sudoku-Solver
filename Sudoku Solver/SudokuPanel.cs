@@ -26,9 +26,9 @@ namespace Sudoku_Solver
             Cubes = new CubeChild[9];
             Sticks = new StickChild[18];
 
-            for (int x = 0; x < 9; x++)
+            for (int y = 0; y < 9; y++)
             {
-                for (int y = 0; y < 9; y++)
+                for (int x = 0; x < 9; x++)
                 {
                     Buttons[x, y] = new SudokuButton()
                     {
@@ -75,9 +75,9 @@ namespace Sudoku_Solver
                     }
                     int index = ((a + 1) * (b + 1)) - 1;
                     Cubes[index] = cubeChild;
-                    cubeY += 3;
+                    cubeY = (cubeY + 3) % 9;
                 }
-                cubeX += 3;
+                cubeX = (cubeX + 3) % 9;
             }
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -108,17 +108,18 @@ namespace Sudoku_Solver
             int sizeHeight = Calculate(Size.Height, buttonCountY, buttonMinimumSizeHeight);
 
 
-            int locationX = 0;
-            for (int x = 0; x < buttonCountX; x++)
-            {
-                int addBonusOffsetX = x > 0 && x % buttonBonusOffsetCount == 0 ? buttonMinimumOffset : 0;
-                locationX += (x > 0 ? sizeWidth : 0) + buttonMinimumOffset + addBonusOffsetX;
 
-                int locationY = 0;
-                for (int y = 0; y < buttonCountY; y++)
+            int locationY = 0;
+            for (int y = 0; y < buttonCountY; y++)
+            {
+                int addBonusOffsetY = y > 0 && y % buttonBonusOffsetCount == 0 ? buttonMinimumOffset : 0;
+                locationY += (y > 0 ? sizeHeight : 0) + buttonMinimumOffset + addBonusOffsetY;
+
+                int locationX = 0;
+                for (int x = 0; x < buttonCountX; x++)
                 {
-                    int addBonusOffsetY = y > 0 && y % buttonBonusOffsetCount == 0 ? buttonMinimumOffset : 0;
-                    locationY += (y > 0 ? sizeHeight : 0) + buttonMinimumOffset + addBonusOffsetY;
+                    int addBonusOffsetX = x > 0 && x % buttonBonusOffsetCount == 0 ? buttonMinimumOffset : 0;
+                    locationX += (x > 0 ? sizeWidth : 0) + buttonMinimumOffset + addBonusOffsetX;
 
                     Buttons[x, y].Size = new Size(sizeWidth, sizeHeight);
                     Buttons[x, y].Location = new Point(locationX, locationY);

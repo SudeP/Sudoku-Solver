@@ -31,11 +31,12 @@ namespace Sudoku_Solver
         {
             this.btnSolve = new System.Windows.Forms.Button();
             this.sudokuArea = new Sudoku_Solver.SudokuPanel();
+            this.btnFillNumber = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSolve
             // 
-            this.btnSolve.Location = new System.Drawing.Point(12, 10);
+            this.btnSolve.Location = new System.Drawing.Point(93, 12);
             this.btnSolve.Name = "btnSolve";
             this.btnSolve.Size = new System.Drawing.Size(75, 23);
             this.btnSolve.TabIndex = 1;
@@ -51,11 +52,21 @@ namespace Sudoku_Solver
             this.sudokuArea.Size = new System.Drawing.Size(400, 400);
             this.sudokuArea.TabIndex = 0;
             // 
+            // btnFillNumber
+            // 
+            this.btnFillNumber.Location = new System.Drawing.Point(12, 12);
+            this.btnFillNumber.Name = "btnFillNumber";
+            this.btnFillNumber.Size = new System.Drawing.Size(75, 23);
+            this.btnFillNumber.TabIndex = 2;
+            this.btnFillNumber.Text = "Fill Number";
+            this.btnFillNumber.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 441);
+            this.Controls.Add(this.btnFillNumber);
             this.Controls.Add(this.btnSolve);
             this.Controls.Add(this.sudokuArea);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -71,6 +82,7 @@ namespace Sudoku_Solver
 
         private SudokuPanel sudokuArea;
         private System.Windows.Forms.Button btnSolve;
+        private System.Windows.Forms.Button btnFillNumber;
     }
 }
 
